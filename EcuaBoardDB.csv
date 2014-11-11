@@ -1,0 +1,8 @@
+"Part";"Value";"Device";"Package";"Description";"MF";"MPN";"OC_FARNELL";"OC_NEWARK";
+"IC1";"INA114P";"INA114P";"DIL08";"Precision Instrumentation Amplifier";"TEXAS INSTRUMENTS";"INA114BP";"1212399";"74K3810";
+"IC2";"LM50";"LM50";"SOT23";"SOT-23 Single-Supply Centigrade Temperature Sensor";"";"";"";"";
+"R1";"511";"R-US_0204/7";"0204/7";"RESISTOR, American symbol";"";"";"";"";
+"SV1";"";"FE08-2";"FE08-2";"FEMALE HEADER";"";"";"unknown";"unknown";
+"SV2";"";"FE08-1";"FE08";"FEMALE HEADER";"";"";"unknown";"unknown";
+"V1";"MPX2050DPH";"MPX2050DPH";"MPX2050DPH";"50 kPa Pressure Sensor";"";"";"unknown";"unknown";
+"X1";"1503_09";"1503_09";"1503_09";"Jack connectors according to JISC 6560, 3.5 mm";"";"";"1243244";"unknown";
