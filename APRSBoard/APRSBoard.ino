@@ -16,9 +16,10 @@ Standard beerware license applies: if you find this useful and meet me, you owe 
 #define ver "APZ001"  //APRS Version: APZ is experimental terminal type, 001 is the version number
 #define type "@"  //APRS station type; @ is a timestamped location
 #define loc "4226.445N/07628.171W"  //Location in mindec separated by a slash; degree is the leading 2-3 digits
-#define period 10  //Data transmission delay in minutes
+#define period 1  //Data transmission delay in minutes
 
 SoftwareSerial Bell202(2,3);  //Set up the radio modem on pins 2 and 3
+int minin=minute();  //Define minin start time
 
 void setup()  {
   Serial.begin(9600);  //Start serial session with OpenLog @ 9600 bps
@@ -29,8 +30,7 @@ void setup()  {
 }
 
 void loop(){
-  int minin=minute();  //Define the minute when the loop begins
-  if(minute()-minin==period || minute()-minin==0){  //If the time is one period later than the last transmission, or if it's the same minute, then transmit
+  if(minute()-minin==period){  //If the time is one period later than the last transmission, or if it's the same minute, then transmit
     digitalWrite(4, HIGH);  //Set M0 to transmit
     digitalWrite(5, LOW);  //Set M1 to transmit
     digitalWrite(13, HIGH);  //Indicate transmission with pin 13 LED
@@ -52,6 +52,7 @@ void loop(){
     Serial.print(",");  //Send comma separator to logger
     Bell202.print(loc);  //Send location to modem
     Serial.print(loc);  //Send location to logger
+    Serial.print(",");
     Bell202.print(".");  //Send . SSID "X" to modem
     for(int i=0; i<8; i++){  //Cycle through all 8 analog channels once
       Bell202.print(analogRead(i));  //Send analog value to modem
@@ -83,4 +84,5 @@ void loop(){
     digitalWrite(5, HIGH);  //Set M1 to receive
     digitalWrite(13, LOW);  //Turn off indicator LED
   }
+  minin=minute();  //Define the minute when the first loop ends
 }
